@@ -62,6 +62,7 @@ main {
   .face::before {
     position: absolute;
     inset: 0;
+    letter-spacing: normal;
   }
 }
 
@@ -154,7 +155,7 @@ main {
 }
 
 #step-8:checked ~ main .character {
-  inset-inline-start: 50%;
+  inset-inline-start: 75%;
   inset-block-start: 45%;
   z-index: 50;
 
@@ -189,7 +190,7 @@ main {
 
 #step-11:checked ~ main .character {
   inset-inline-start: 20%;
-  inset-block-start: 20%;
+  inset-block-start: 60%;
 
   .face {
     transform: rotateZ(-10deg);
@@ -229,16 +230,14 @@ main {
   inset-block-start: 50%;
 
   .face {
-    transform: scale(1.2);
+    color: transparent;
   }
 
   .face::after {
-    content: '[⌣  ⌣]';
+    content: '[ - ᴗ - ]';
     position: absolute;
     inset: 0;
     color: var(--text);
-    opacity: 0;
-    animation: smile-flash 3s ease-in-out 2s;
   }
 }
 
@@ -251,10 +250,6 @@ main {
   }
 }
 
-@keyframes smile-flash {
-  0%, 90%, 100% { opacity: 0; }
-  45%, 55% { opacity: 1; }
-}
 
 .scene {
   position: absolute;
@@ -520,20 +515,14 @@ h1 {
   font-family: var(--font-mono);
   font-size: clamp(0.75rem, 2dvw, 1rem);
   color: var(--text-muted);
+  
 
   span {
     opacity: 0;
     animation: word-float 1s ease forwards;
     transform-origin: center;
+    animation-delay: calc(var(--i) * 0.2s + 2s);
   }
-
-  span:nth-child(1) { animation-delay: 2s; }
-  span:nth-child(2) { animation-delay: 2.2s; }
-  span:nth-child(3) { animation-delay: 2.4s; }
-  span:nth-child(4) { animation-delay: 2.6s; }
-  span:nth-child(5) { animation-delay: 2.8s; }
-  span:nth-child(6) { animation-delay: 3s; }
-  span:nth-child(7) { animation-delay: 3.2s; }
 }
 
 @keyframes word-float {
@@ -609,11 +598,11 @@ h1 {
 
 .heavy-rock {
   position: relative;
-  inline-size: clamp(200px, 40dvw, 400px);
-  block-size: clamp(150px, 30dvh, 300px);
+  inline-size: clamp(400px, 80dvw, 800px);
+  block-size: clamp(300px, 60dvh, 600px);
   margin-block: 2rem;
   background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
-  border-radius: 20% 25% 30% 20%;
+  border-radius: 20% 20% 20% 20%;
   display: grid;
   place-items: center;
   transform-style: preserve-3d;
@@ -623,7 +612,7 @@ h1 {
 
   .rock-text {
     font-family: var(--font-mono);
-    font-size: clamp(1.5rem, 4dvw, 3rem);
+    font-size: clamp(2.5rem, 7dvw, 5rem);
     font-weight: 700;
     color: rgba(255, 255, 255, 0.3);
     text-align: center;
@@ -693,8 +682,9 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
