@@ -41,6 +41,7 @@ main {
   transition: transform var(--duration-slow);
 }
 
+/* Vortex Background */
 .vortex-container {
   block-size: 100%;
   display: grid;
@@ -59,6 +60,7 @@ main {
   }
 }
 
+/* Character */
 .character {
   position: fixed;
   inset-inline-start: 50%;
@@ -77,200 +79,16 @@ main {
     transition: all var(--duration-fast);
     white-space: nowrap;
     position: relative;
-  }
 
-  .face::before {
-    position: absolute;
-    inset: 0;
-    letter-spacing: normal;
-  }
-}
-
-#step-0:checked~main .character {
-  inset-inline-start: 85%;
-  inset-block-start: 50%;
-  opacity: 0.6;
-
-  .face {
-    transform: rotateY(-20deg);
+    &::before {
+      position: absolute;
+      inset: 0;
+      letter-spacing: normal;
+    }
   }
 }
 
-#step-1:checked~main .character {
-  inset-inline-start: 70%;
-  inset-block-start: 30%;
-
-  .face {
-    transform: rotateY(0deg) scale(1.1);
-    color: transparent;
-  }
-
-  .face::before {
-    content: '[==]';
-    color: var(--text);
-  }
-}
-
-#step-2:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 25%;
-
-  .face {
-    transform: rotateX(5deg);
-  }
-}
-
-#step-3:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 35%;
-
-  .face {
-    transform: scale(1.3);
-  }
-}
-
-#step-4:checked~main .character {
-  inset-inline-start: 75%;
-  inset-block-start: 60%;
-
-  .face {
-    transform: scale(0.9) rotateZ(-5deg);
-    opacity: 0.8;
-  }
-}
-
-#step-5:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 20%;
-
-  .face {
-    transform: scale(1);
-    color: transparent;
-  }
-
-  .face::before {
-    content: '[—  —]';
-    color: var(--text);
-  }
-}
-
-#step-6:checked~main .character {
-  inset-inline-start: 20%;
-  inset-block-start: 70%;
-
-  .face {
-    transform: rotateZ(-45deg) scale(0.8);
-    animation: tumble 2s ease-out;
-  }
-}
-
-#step-7:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 50%;
-
-  .face {
-    transform: scale(0.5) rotateY(180deg);
-    opacity: 0.5;
-  }
-}
-
-#step-8:checked~main .character {
-  inset-inline-start: 75%;
-  inset-block-start: 45%;
-
-  .face {
-    transform: scale(0.7);
-    opacity: 0.7;
-  }
-}
-
-#step-9:checked~main .character {
-  inset-inline-start: 65%;
-  inset-block-start: 35%;
-
-  .face {
-    color: transparent;
-  }
-
-  .face::before {
-    content: '[ ○  ○ ]';
-    color: var(--text);
-  }
-}
-
-#step-10:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 30%;
-
-  .face {
-    transform: scale(1);
-  }
-}
-
-#step-11:checked~main .character {
-  inset-inline-start: 20%;
-  inset-block-start: 60%;
-
-  .face {
-    transform: rotateZ(-10deg);
-  }
-}
-
-#step-12:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 40%;
-
-  .face {
-    color: transparent;
-  }
-
-  .face::before {
-    content: '[·  ·]';
-    color: var(--text);
-  }
-}
-
-#step-13:checked~main .character {
-  inset-inline-start: 60%;
-  inset-block-start: 50%;
-
-  .face {
-    color: transparent;
-  }
-
-  .face::before {
-    content: '[●  ●]';
-    color: var(--text);
-  }
-}
-
-#step-14:checked~main .character {
-  inset-inline-start: 50%;
-  inset-block-start: 50%;
-
-  .face {
-    color: transparent;
-  }
-
-  .face::after {
-    content: '[ - ᴗ - ]';
-    position: absolute;
-    inset: 0;
-    color: var(--text);
-  }
-}
-
-@keyframes tumble {
-  0% {
-    transform: rotateZ(0deg) scale(1);
-  }
-
-  100% {
-    transform: rotateZ(-360deg) scale(0.8);
-  }
-}
-
-
+/* Scene Container */
 .scene {
   position: absolute;
   inset: 0;
@@ -278,50 +96,21 @@ main {
   place-items: start;
   padding-inline-start: clamp(2rem, 10dvw, 8rem);
   padding-block-start: clamp(2rem, 10dvh, 8rem);
+  padding-block-end: 3rem;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-med);
   overflow-y: auto;
+  overflow-x: hidden;
   content-visibility: hidden;
 
   .content {
     max-inline-size: 60ch;
+    inline-size: 100%;
   }
 }
 
-#step-0:checked~main .scene-0,
-#step-1:checked~main .scene-1,
-#step-2:checked~main .scene-2,
-#step-3:checked~main .scene-3,
-#step-4:checked~main .scene-4,
-#step-5:checked~main .scene-5,
-#step-6:checked~main .scene-6,
-#step-7:checked~main .scene-7,
-#step-8:checked~main .scene-8,
-#step-9:checked~main .scene-9,
-#step-10:checked~main .scene-10,
-#step-11:checked~main .scene-11,
-#step-12:checked~main .scene-12,
-#step-13:checked~main .scene-13,
-#step-14:checked~main .scene-14 {
-  opacity: 1;
-  pointer-events: all;
-  animation: scene-enter var(--duration-slow) ease;
-  content-visibility: visible;
-}
-
-@keyframes scene-enter {
-  from {
-    opacity: 0;
-    transform: translateY(2rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Base Typography */
 h1 {
   font-family: var(--font-mono);
   font-size: clamp(2rem, 8dvw, 6rem);
@@ -331,32 +120,38 @@ h1 {
   letter-spacing: -0.02em;
 }
 
-.dialogue {
+.dialogue,
+[class*="dialogue-delay-"] {
   font-size: clamp(1rem, 3dvw, 1.5rem);
   line-height: 1.6;
   margin-block-end: 1.5rem;
   opacity: 0;
   animation: fade-in var(--duration-med) ease forwards;
+  animation-delay: calc(var(--delay, 0) * 0.8s);
+}
+
+.dialogue {
+  --delay: 0;
 }
 
 .dialogue-delay-1 {
-  animation-delay: 0.8s;
+  --delay: 1;
 }
 
 .dialogue-delay-2 {
-  animation-delay: 1.6s;
+  --delay: 2;
 }
 
 .dialogue-delay-3 {
-  animation-delay: 2.4s;
+  --delay: 3;
 }
 
 .dialogue-delay-4 {
-  animation-delay: 3.2s;
+  --delay: 4;
 }
 
 .dialogue-delay-5 {
-  animation-delay: 4s;
+  --delay: 5;
 }
 
 .small-text {
@@ -365,34 +160,7 @@ h1 {
   font-style: italic;
 }
 
-.story-text {
-  font-family: var(--font-mono);
-  font-size: clamp(0.875rem, 2.5dvw, 1.25rem);
-}
-
-.final-text {
-  font-style: italic;
-  color: var(--text-muted);
-  margin-block-start: 2rem;
-}
-
-.void-word {
-  color: var(--void);
-  font-weight: 600;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Actions */
 .action {
   display: inline-block;
   margin-block-start: 3rem;
@@ -425,16 +193,7 @@ h1 {
   }
 }
 
-@keyframes action-appear {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
+/* Action Modifiers */
 .action-offscreen-right,
 .action-offscreen-bottom,
 .action-far-corner {
@@ -448,9 +207,29 @@ h1 {
   animation: drift-in 4s ease 3s forwards;
 }
 
-@keyframes drift-in {
-  to {
-    inset-inline-start: calc(100dvw - 10rem);
+.action-offscreen-bottom {
+  position: fixed;
+  inset-inline-start: 50%;
+  inset-block-start: calc(100dvh + 5rem);
+  translate: -50% 0;
+  animation: rise-up 4s ease 3s forwards;
+}
+
+.action-far-corner {
+  position: fixed;
+  inset-inline-end: 2rem;
+  inset-block-end: 2rem;
+  inset-inline-start: auto;
+  margin: 0;
+
+  .action-text {
+    font-size: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  &:hover .action-text {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
   }
 }
 
@@ -473,40 +252,6 @@ h1 {
 
   &:hover {
     transform: rotateZ(0deg);
-  }
-}
-
-.action-forbidden {
-  .action-text {
-    animation: pulse-warning 2s ease infinite;
-  }
-}
-
-@keyframes pulse-warning {
-
-  0%,
-  100% {
-    border-color: var(--text-muted);
-    color: var(--text-muted);
-  }
-
-  50% {
-    border-color: rgba(200, 0, 0, 0.6);
-    color: rgba(200, 0, 0, 0.8);
-  }
-}
-
-.action-offscreen-bottom {
-  position: fixed;
-  inset-inline-start: 50%;
-  inset-block-start: calc(100dvh + 5rem);
-  translate: -50% 0;
-  animation: rise-up 4s ease 3s forwards;
-}
-
-@keyframes rise-up {
-  to {
-    inset-block-start: calc(100dvh - 8rem);
   }
 }
 
@@ -537,129 +282,478 @@ h1 {
   margin-block-end: 3rem;
 }
 
-.action-far-corner {
-  position: fixed;
-  inset-inline-end: 2rem;
-  inset-block-end: 2rem;
-  inset-inline-start: auto;
-  margin: 0;
-
-  .action-text {
-    font-size: 0.5rem;
-    padding: 0.5rem;
-  }
-
-  &:hover .action-text {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
-  }
-}
-
-.word-jumble {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4rem;
-  margin-block: 2rem;
-  font-family: var(--font-mono);
-  font-size: clamp(0.75rem, 2dvw, 1rem);
-  color: var(--text-muted);
-
-
-  span {
-    opacity: 0;
-    animation: word-float 1s ease forwards;
-    transform-origin: center;
-    animation-delay: calc(var(--i) * 0.2s + 2s);
-  }
-}
-
-@keyframes word-float {
+/* Keyframes */
+@keyframes action-appear {
   from {
     opacity: 0;
-    transform: translateY(-1rem) rotate(0deg);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0) rotateZ(calc(var(--i) * 74deg));
   }
 }
 
-.blowing-words {
-  position: relative;
-  block-size: 50dvh;
-  inline-size: 100%;
-  font-family: var(--font-mono);
-  font-size: clamp(1rem, 3dvw, 2rem);
-  overflow: hidden;
+@keyframes drift-in {
+  to {
+    inset-inline-start: calc(100dvw - 10rem);
+  }
+}
 
-  span {
-    position: absolute;
+@keyframes rise-up {
+  to {
+    inset-block-start: calc(100dvh - 8rem);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
     opacity: 1;
-    animation: blow-away 2s ease-out forwards;
-  }
-
-  span:nth-child(1) {
-    animation-delay: 0s;
-    inset-block-start: 40%;
-    inset-inline-start: 30%;
-  }
-
-  span:nth-child(2) {
-    animation-delay: 0.1s;
-    inset-block-start: 45%;
-    inset-inline-start: 50%;
-  }
-
-  span:nth-child(3) {
-    animation-delay: 0.2s;
-    inset-block-start: 50%;
-    inset-inline-start: 40%;
-  }
-
-  span:nth-child(4) {
-    animation-delay: 0.3s;
-    inset-block-start: 35%;
-    inset-inline-start: 60%;
-  }
-
-  span:nth-child(5) {
-    animation-delay: 0.4s;
-    inset-block-start: 55%;
-    inset-inline-start: 35%;
-  }
-
-  span:nth-child(6) {
-    animation-delay: 0.5s;
-    inset-block-start: 48%;
-    inset-inline-start: 55%;
-  }
-
-  span:nth-child(7) {
-    animation-delay: 0.6s;
-    inset-block-start: 42%;
-    inset-inline-start: 45%;
-  }
-
-  span:nth-child(8) {
-    animation-delay: 0.7s;
-    inset-block-start: 52%;
-    inset-inline-start: 48%;
-  }
-
-  span:nth-child(9) {
-    animation-delay: 0.8s;
-    inset-block-start: 38%;
-    inset-inline-start: 42%;
-  }
-
-  span:nth-child(10) {
-    animation-delay: 0.9s;
-    inset-block-start: 46%;
-    inset-inline-start: 52%;
+    transform: translateY(0);
   }
 }
 
+@keyframes scene-enter {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tumble {
+  0% {
+    transform: rotateZ(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotateZ(-360deg) scale(0.8);
+  }
+}
+
+/* Stage-specific styles nested under :has selectors */
+
+/* Step 0: Cover */
+:has(#step-0:checked) {
+  .scene-0 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 85%;
+    inset-block-start: 50%;
+    opacity: 0.6;
+
+    .face {
+      transform: rotateY(-20deg);
+    }
+  }
+}
+
+/* Step 1: Angry */
+:has(#step-1:checked) {
+  .scene-1 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 70%;
+    inset-block-start: 30%;
+
+    .face {
+      transform: rotateY(0deg) scale(1.1);
+      color: transparent;
+
+      &::before {
+        content: '[==]';
+        color: var(--text);
+      }
+    }
+  }
+}
+
+/* Step 2: Word jumble */
+:has(#step-2:checked) {
+  .scene-2 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 50%;
+    inset-block-start: 25%;
+
+    .face {
+      transform: rotateX(5deg);
+    }
+  }
+
+  .word-jumble {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin-block: 2rem;
+    font-family: var(--font-mono);
+    font-size: clamp(0.75rem, 2dvw, 1rem);
+    color: var(--text-muted);
+
+    span {
+      opacity: 0;
+      animation: word-float 1s ease forwards;
+      transform-origin: center;
+      animation-delay: calc(var(--i) * 0.1s + 2s);
+    }
+  }
+}
+
+/* Step 3: HAH */
+:has(#step-3:checked) {
+  .scene-3 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 50%;
+    inset-block-start: 35%;
+
+    .face {
+      transform: scale(1.3);
+    }
+  }
+}
+
+/* Step 4: Deciding */
+:has(#step-4:checked) {
+  .scene-4 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 75%;
+    inset-block-start: 60%;
+
+    .face {
+      transform: scale(0.9) rotateZ(-5deg);
+      opacity: 0.8;
+    }
+  }
+}
+
+/* Step 5: Scroll warning + blowing words */
+:has(#step-5:checked) {
+  .scene-5 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 50%;
+    inset-block-start: 20%;
+
+    .face {
+      transform: scale(1);
+      color: transparent;
+
+      &::before {
+        content: '[—  —]';
+        color: var(--text);
+      }
+    }
+  }
+
+  .action-forbidden .action-text {
+    animation: pulse-warning 2s ease infinite;
+  }
+
+  .blowing-words {
+    position: relative;
+    block-size: 200dvh;
+    inline-size: 100%;
+    min-inline-size: 100%;
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 3dvw, 2rem);
+    margin-block-start: 3rem;
+
+    span {
+      position: absolute;
+      inset-inline-start: var(--x, 45%);
+      inset-block-start: var(--y, 45%);
+      opacity: 1;
+      animation: blow-away linear forwards;
+      animation-timeline: scroll(block nearest);
+      animation-range: entry 10% exit 90%;
+      will-change: transform, opacity;
+    }
+
+    span:nth-child(odd) {
+      --random-x: 80;
+      --random-y: -60;
+      --random-r: 180;
+    }
+
+    span:nth-child(even) {
+      --random-x: -80;
+      --random-y: -40;
+      --random-r: -180;
+    }
+  }
+
+  .oof-text {
+    font-size: clamp(1.5rem, 5dvw, 3rem);
+    font-weight: 700;
+    margin-block: 2rem;
+    opacity: 0;
+    animation: fade-in var(--duration-med) ease forwards;
+    animation-delay: 0.5s;
+  }
+}
+
+/* Step 6: Dark void */
+:has(#step-6:checked) {
+  body {
+    background: var(--void);
+  }
+
+  .scene-6 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+
+    .dialogue {
+      color: var(--bg);
+    }
+  }
+
+  main .character {
+    inset-inline-start: 20%;
+    inset-block-start: 70%;
+
+    .face {
+      transform: rotateZ(-45deg) scale(0.8);
+      animation: tumble 2s ease-out;
+    }
+  }
+}
+
+/* Step 7: Heavy rock */
+:has(#step-7:checked) {
+  .scene-7 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 80%;
+    inset-block-start: 50%;
+
+    .face {
+      transform: scale(0.5) rotateY(180deg);
+      opacity: 0.5;
+    }
+  }
+
+  .heavy-rock {
+    position: relative;
+    inline-size: clamp(400px, 80dvw, 800px);
+    block-size: clamp(300px, 60dvh, 600px);
+    margin-block: 2rem;
+    background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+    border-radius: 20% 20% 20% 20%;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+    animation: rock-drop 1s ease-out 1s backwards;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    .rock-text {
+      font-family: var(--font-mono);
+      font-size: clamp(2.5rem, 7dvw, 5rem);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.3);
+      text-align: center;
+      line-height: 1.2;
+      transform: translateZ(20px);
+    }
+  }
+}
+
+/* Step 8: Strong */
+:has(#step-8:checked) {
+  .scene-8 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 75%;
+    inset-block-start: 45%;
+
+    .face {
+      color: transparent;
+
+      &::before {
+        content: '[ ○  ○ ]';
+        color: var(--text);
+      }
+    }
+  }
+}
+
+/* Step 9: Give up */
+:has(#step-9:checked) {
+  .scene-9 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 65%;
+    inset-block-start: 35%;
+  }
+}
+
+/* Step 10: Name blank */
+:has(#step-10:checked) {
+  .scene-10 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 50%;
+    inset-block-start: 30%;
+
+    .face {
+      transform: scale(1);
+    }
+  }
+
+  .story-text {
+    font-family: var(--font-mono);
+    font-size: clamp(0.875rem, 2.5dvw, 1.25rem);
+  }
+}
+
+/* Step 11: Pest story */
+:has(#step-11:checked) {
+  .scene-11 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 20%;
+    inset-block-start: 60%;
+
+    .face {
+      transform: rotateZ(-10deg);
+    }
+  }
+}
+
+/* Step 12: YOU */
+:has(#step-12:checked) {
+  .scene-12 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 50%;
+    inset-block-start: 40%;
+
+    .face {
+      color: transparent;
+
+      &::before {
+        content: '[●  ●]';
+        color: var(--text);
+      }
+    }
+  }
+}
+
+/* Step 13: Almost done */
+:has(#step-13:checked) {
+  .scene-13 {
+    opacity: 1;
+    pointer-events: all;
+    animation: scene-enter var(--duration-slow) ease;
+    content-visibility: visible;
+  }
+
+  main .character {
+    inset-inline-start: 60%;
+    inset-block-start: 50%;
+
+    .face {
+      color: transparent;
+
+      &::before {
+        content: '[- ⌣ -]';
+        color: var(--text);
+      }
+    }
+  }
+
+  .final-text {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-block-start: 2rem;
+  }
+
+  .the-end {
+    margin-block-start: 4rem;
+    opacity: 0;
+    animation: fade-in var(--duration-slow) ease 6s forwards;
+
+    p:first-child {
+      font-family: var(--font-mono);
+      font-size: clamp(1.5rem, 5dvw, 3rem);
+      font-weight: 700;
+      margin-block-end: 1rem;
+    }
+  }
+}
+
+/* Blow away animation */
 @keyframes blow-away {
   0% {
     opacity: 1;
@@ -672,47 +766,29 @@ h1 {
   }
 }
 
-.blowing-words span:nth-child(odd) {
-  --random-x: 80;
-  --random-y: -60;
-  --random-r: 180;
+@keyframes word-float {
+  from {
+    opacity: 0;
+    transform: translateY(-1rem) rotate(calc(var(--i) * 60deg));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(calc(var(--i) * 72deg));
+  }
 }
 
-.blowing-words span:nth-child(even) {
-  --random-x: -80;
-  --random-y: -40;
-  --random-r: -180;
-}
+@keyframes pulse-warning {
 
-#step-7:checked~body {
-  background: var(--void);
-}
+  0%,
+  100% {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+  }
 
-#step-7:checked~main .scene-7 .dialogue {
-  color: var(--bg);
-}
-
-.heavy-rock {
-  position: relative;
-  inline-size: clamp(400px, 80dvw, 800px);
-  block-size: clamp(300px, 60dvh, 600px);
-  margin-block: 2rem;
-  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
-  border-radius: 20% 20% 20% 20%;
-  display: grid;
-  place-items: center;
-  transform-style: preserve-3d;
-  animation: rock-drop 1s ease-out 1s backwards;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-
-  .rock-text {
-    font-family: var(--font-mono);
-    font-size: clamp(2.5rem, 7dvw, 5rem);
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.3);
-    text-align: center;
-    line-height: 1.2;
-    transform: translateZ(20px);
+  50% {
+    border-color: rgba(200, 0, 0, 0.6);
+    color: rgba(200, 0, 0, 0.8);
   }
 }
 
@@ -736,19 +812,7 @@ h1 {
   }
 }
 
-.the-end {
-  margin-block-start: 4rem;
-  opacity: 0;
-  animation: fade-in var(--duration-slow) ease 6s forwards;
-
-  p:first-child {
-    font-family: var(--font-mono);
-    font-size: clamp(1.5rem, 5dvw, 3rem);
-    font-weight: 700;
-    margin-block-end: 1rem;
-  }
-}
-
+/* Media Queries */
 @media (max-width: 768px) {
   .scene {
     padding-inline-start: 1rem;
