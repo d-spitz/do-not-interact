@@ -3,6 +3,7 @@
   --text: #2a2a2a;
   --text-muted: #6a6a6a;
   --accent: #5a5a5a;
+  --accent-secondary: rgba(90, 203, 251, 0.2);
   --void: #0a0a0a;
   --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
   --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -11,7 +12,9 @@
   --duration-fast: 0.4s;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,15 +37,32 @@ body {
 main {
   position: relative;
   block-size: 100dvh;
-  inline-size: 100dvw;
+  inline-size: 100%;
   transition: transform var(--duration-slow);
+}
+
+.vortex-container {
+  block-size: 100%;
+  display: grid;
+  place-items: center;
+
+  .node {
+    inline-size: 92%;
+    block-size: 92%;
+    border: 2px solid var(--accent-secondary);
+    border-radius: 40%;
+    display: grid;
+    place-items: center;
+    transform: rotate(8deg) scale(0.95);
+    filter: hue-rotate(8deg);
+    animation: pulse 8s ease-in-out infinite alternate;
+  }
 }
 
 .character {
   position: fixed;
   inset-inline-start: 50%;
   inset-block-start: 50%;
-  z-index: 200;
   translate: -50% -50%;
   transition: all var(--duration-slow) cubic-bezier(0.4, 0.0, 0.2, 1);
   pointer-events: none;
@@ -66,7 +86,7 @@ main {
   }
 }
 
-#step-0:checked ~ main .character {
+#step-0:checked~main .character {
   inset-inline-start: 85%;
   inset-block-start: 50%;
   opacity: 0.6;
@@ -76,7 +96,7 @@ main {
   }
 }
 
-#step-1:checked ~ main .character {
+#step-1:checked~main .character {
   inset-inline-start: 70%;
   inset-block-start: 30%;
 
@@ -91,7 +111,7 @@ main {
   }
 }
 
-#step-2:checked ~ main .character {
+#step-2:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 25%;
 
@@ -100,7 +120,7 @@ main {
   }
 }
 
-#step-3:checked ~ main .character {
+#step-3:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 35%;
 
@@ -109,7 +129,7 @@ main {
   }
 }
 
-#step-4:checked ~ main .character {
+#step-4:checked~main .character {
   inset-inline-start: 75%;
   inset-block-start: 60%;
 
@@ -119,7 +139,7 @@ main {
   }
 }
 
-#step-5:checked ~ main .character {
+#step-5:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 20%;
 
@@ -134,7 +154,7 @@ main {
   }
 }
 
-#step-6:checked ~ main .character {
+#step-6:checked~main .character {
   inset-inline-start: 20%;
   inset-block-start: 70%;
 
@@ -144,7 +164,7 @@ main {
   }
 }
 
-#step-7:checked ~ main .character {
+#step-7:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 50%;
 
@@ -154,10 +174,9 @@ main {
   }
 }
 
-#step-8:checked ~ main .character {
+#step-8:checked~main .character {
   inset-inline-start: 75%;
   inset-block-start: 45%;
-  z-index: 50;
 
   .face {
     transform: scale(0.7);
@@ -165,7 +184,7 @@ main {
   }
 }
 
-#step-9:checked ~ main .character {
+#step-9:checked~main .character {
   inset-inline-start: 65%;
   inset-block-start: 35%;
 
@@ -179,7 +198,7 @@ main {
   }
 }
 
-#step-10:checked ~ main .character {
+#step-10:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 30%;
 
@@ -188,7 +207,7 @@ main {
   }
 }
 
-#step-11:checked ~ main .character {
+#step-11:checked~main .character {
   inset-inline-start: 20%;
   inset-block-start: 60%;
 
@@ -197,7 +216,7 @@ main {
   }
 }
 
-#step-12:checked ~ main .character {
+#step-12:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 40%;
 
@@ -211,7 +230,7 @@ main {
   }
 }
 
-#step-13:checked ~ main .character {
+#step-13:checked~main .character {
   inset-inline-start: 60%;
   inset-block-start: 50%;
 
@@ -225,7 +244,7 @@ main {
   }
 }
 
-#step-14:checked ~ main .character {
+#step-14:checked~main .character {
   inset-inline-start: 50%;
   inset-block-start: 50%;
 
@@ -245,6 +264,7 @@ main {
   0% {
     transform: rotateZ(0deg) scale(1);
   }
+
   100% {
     transform: rotateZ(-360deg) scale(0.8);
   }
@@ -261,7 +281,6 @@ main {
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--duration-med);
-  z-index: 1;
   overflow-y: auto;
   content-visibility: hidden;
 
@@ -270,21 +289,21 @@ main {
   }
 }
 
-#step-0:checked ~ main .scene-0,
-#step-1:checked ~ main .scene-1,
-#step-2:checked ~ main .scene-2,
-#step-3:checked ~ main .scene-3,
-#step-4:checked ~ main .scene-4,
-#step-5:checked ~ main .scene-5,
-#step-6:checked ~ main .scene-6,
-#step-7:checked ~ main .scene-7,
-#step-8:checked ~ main .scene-8,
-#step-9:checked ~ main .scene-9,
-#step-10:checked ~ main .scene-10,
-#step-11:checked ~ main .scene-11,
-#step-12:checked ~ main .scene-12,
-#step-13:checked ~ main .scene-13,
-#step-14:checked ~ main .scene-14 {
+#step-0:checked~main .scene-0,
+#step-1:checked~main .scene-1,
+#step-2:checked~main .scene-2,
+#step-3:checked~main .scene-3,
+#step-4:checked~main .scene-4,
+#step-5:checked~main .scene-5,
+#step-6:checked~main .scene-6,
+#step-7:checked~main .scene-7,
+#step-8:checked~main .scene-8,
+#step-9:checked~main .scene-9,
+#step-10:checked~main .scene-10,
+#step-11:checked~main .scene-11,
+#step-12:checked~main .scene-12,
+#step-13:checked~main .scene-13,
+#step-14:checked~main .scene-14 {
   opacity: 1;
   pointer-events: all;
   animation: scene-enter var(--duration-slow) ease;
@@ -296,6 +315,7 @@ main {
     opacity: 0;
     transform: translateY(2rem);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -319,11 +339,25 @@ h1 {
   animation: fade-in var(--duration-med) ease forwards;
 }
 
-.dialogue-delay-1 { animation-delay: 0.8s; }
-.dialogue-delay-2 { animation-delay: 1.6s; }
-.dialogue-delay-3 { animation-delay: 2.4s; }
-.dialogue-delay-4 { animation-delay: 3.2s; }
-.dialogue-delay-5 { animation-delay: 4s; }
+.dialogue-delay-1 {
+  animation-delay: 0.8s;
+}
+
+.dialogue-delay-2 {
+  animation-delay: 1.6s;
+}
+
+.dialogue-delay-3 {
+  animation-delay: 2.4s;
+}
+
+.dialogue-delay-4 {
+  animation-delay: 3.2s;
+}
+
+.dialogue-delay-5 {
+  animation-delay: 4s;
+}
 
 .small-text {
   font-size: 0.875em;
@@ -348,8 +382,15 @@ h1 {
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(0.5rem); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .action {
@@ -358,7 +399,6 @@ h1 {
   cursor: pointer;
   opacity: 0;
   animation: action-appear var(--duration-med) ease 3s forwards;
-  z-index: 300;
   position: relative;
 
   .action-text {
@@ -386,8 +426,13 @@ h1 {
 }
 
 @keyframes action-appear {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .action-offscreen-right,
@@ -438,10 +483,13 @@ h1 {
 }
 
 @keyframes pulse-warning {
-  0%, 100% {
+
+  0%,
+  100% {
     border-color: var(--text-muted);
     color: var(--text-muted);
   }
+
   50% {
     border-color: rgba(200, 0, 0, 0.6);
     color: rgba(200, 0, 0, 0.8);
@@ -510,12 +558,12 @@ h1 {
 .word-jumble {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 4rem;
   margin-block: 2rem;
   font-family: var(--font-mono);
   font-size: clamp(0.75rem, 2dvw, 1rem);
   color: var(--text-muted);
-  
+
 
   span {
     opacity: 0;
@@ -528,11 +576,12 @@ h1 {
 @keyframes word-float {
   from {
     opacity: 0;
-    transform: translateY(-1rem) rotateZ(-10deg);
+    transform: translateY(-1rem) rotate(0deg);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0) rotateZ(0deg);
+    transform: translateY(0) rotateZ(calc(var(--i) * 74deg));
   }
 }
 
@@ -550,16 +599,65 @@ h1 {
     animation: blow-away 2s ease-out forwards;
   }
 
-  span:nth-child(1) { animation-delay: 0s; inset-block-start: 40%; inset-inline-start: 30%; }
-  span:nth-child(2) { animation-delay: 0.1s; inset-block-start: 45%; inset-inline-start: 50%; }
-  span:nth-child(3) { animation-delay: 0.2s; inset-block-start: 50%; inset-inline-start: 40%; }
-  span:nth-child(4) { animation-delay: 0.3s; inset-block-start: 35%; inset-inline-start: 60%; }
-  span:nth-child(5) { animation-delay: 0.4s; inset-block-start: 55%; inset-inline-start: 35%; }
-  span:nth-child(6) { animation-delay: 0.5s; inset-block-start: 48%; inset-inline-start: 55%; }
-  span:nth-child(7) { animation-delay: 0.6s; inset-block-start: 42%; inset-inline-start: 45%; }
-  span:nth-child(8) { animation-delay: 0.7s; inset-block-start: 52%; inset-inline-start: 48%; }
-  span:nth-child(9) { animation-delay: 0.8s; inset-block-start: 38%; inset-inline-start: 42%; }
-  span:nth-child(10) { animation-delay: 0.9s; inset-block-start: 46%; inset-inline-start: 52%; }
+  span:nth-child(1) {
+    animation-delay: 0s;
+    inset-block-start: 40%;
+    inset-inline-start: 30%;
+  }
+
+  span:nth-child(2) {
+    animation-delay: 0.1s;
+    inset-block-start: 45%;
+    inset-inline-start: 50%;
+  }
+
+  span:nth-child(3) {
+    animation-delay: 0.2s;
+    inset-block-start: 50%;
+    inset-inline-start: 40%;
+  }
+
+  span:nth-child(4) {
+    animation-delay: 0.3s;
+    inset-block-start: 35%;
+    inset-inline-start: 60%;
+  }
+
+  span:nth-child(5) {
+    animation-delay: 0.4s;
+    inset-block-start: 55%;
+    inset-inline-start: 35%;
+  }
+
+  span:nth-child(6) {
+    animation-delay: 0.5s;
+    inset-block-start: 48%;
+    inset-inline-start: 55%;
+  }
+
+  span:nth-child(7) {
+    animation-delay: 0.6s;
+    inset-block-start: 42%;
+    inset-inline-start: 45%;
+  }
+
+  span:nth-child(8) {
+    animation-delay: 0.7s;
+    inset-block-start: 52%;
+    inset-inline-start: 48%;
+  }
+
+  span:nth-child(9) {
+    animation-delay: 0.8s;
+    inset-block-start: 38%;
+    inset-inline-start: 42%;
+  }
+
+  span:nth-child(10) {
+    animation-delay: 0.9s;
+    inset-block-start: 46%;
+    inset-inline-start: 52%;
+  }
 }
 
 @keyframes blow-away {
@@ -567,12 +665,10 @@ h1 {
     opacity: 1;
     transform: translateX(0) translateY(0) rotateZ(0deg) scale(1);
   }
+
   100% {
     opacity: 0;
-    transform: translateX(calc(var(--random-x, 100) * 1dvw))
-               translateY(calc(var(--random-y, -50) * 1dvh))
-               rotateZ(calc(var(--random-r, 360) * 1deg))
-               scale(0.3);
+    transform: translateX(calc(var(--random-x, 100) * 1dvw)) translateY(calc(var(--random-y, -50) * 1dvh)) rotateZ(calc(var(--random-r, 360) * 1deg)) scale(0.3);
   }
 }
 
@@ -588,11 +684,11 @@ h1 {
   --random-r: -180;
 }
 
-#step-7:checked ~ body {
+#step-7:checked~body {
   background: var(--void);
 }
 
-#step-7:checked ~ main .scene-7 .dialogue {
+#step-7:checked~main .scene-7 .dialogue {
   color: var(--bg);
 }
 
@@ -608,7 +704,6 @@ h1 {
   transform-style: preserve-3d;
   animation: rock-drop 1s ease-out 1s backwards;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  z-index: 60;
 
   .rock-text {
     font-family: var(--font-mono);
@@ -626,12 +721,15 @@ h1 {
     transform: translateY(-100dvh) rotateZ(-20deg);
     opacity: 0;
   }
+
   70% {
     transform: translateY(0) rotateZ(2deg);
   }
+
   85% {
     transform: translateY(-10px) rotateZ(-1deg);
   }
+
   100% {
     transform: translateY(0) rotateZ(0deg);
     opacity: 1;
@@ -682,7 +780,10 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-delay: 0.01ms !important;
     animation-iteration-count: 1 !important;
